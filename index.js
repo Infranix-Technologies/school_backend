@@ -1,4 +1,4 @@
-const client = require("./db_config")
+const client = require("./db_config");
 const express = require("express");
 const bodyParser = require("body-parser");
 const router = require("./Routes");
@@ -9,13 +9,14 @@ app.use(bodyParser.json());
 const port = 5500;
 
 app.listen(port, () => {
-    console.log('Port running at ' + port);
-})
+  console.log("Port run " + port);
+});
 
-client.query('CREATE DATABASE school_app')
-    .then(() => console.log('Database created successfully'))
-    .catch(err => console.error('Error creating database', err));
+client
+  .query("CREATE DATABASE school_app")
+  .then(() => console.log("Database created successfully"))
+  .catch((err) => console.error("Error creating database", err));
 
 client.sync();
 
-app.use('/v1', router);
+app.use("/v1", router);
